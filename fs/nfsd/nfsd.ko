@@ -1,0 +1,3 @@
+# NFS server kernel module for Jetson 4.9.x kernels
+# This is a placeholder for the compiled kernel module
+# Actual size: ~9.1MB when compiled

@@ -1,0 +1,3 @@
+# Network lock manager module for Jetson 4.9.x kernels
+# This is a placeholder for the compiled kernel module
+# Actual size: ~5.7MB when compiled
