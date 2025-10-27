@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jetson Kernel Modules - XFS & NFS Support</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <div class="nav-brand">
+                        <i class="fas fa-microchip"></i>
+                        <span>Jetson Kernel Modules</span>
+                    </div>
+                    <div class="nav-links">
+                        <a href="#install">Install</a>
+                        <a href="#modules">Modules</a>
+                        <a href="#guide">Guide</a>
+                        <a href="#support">Support</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>XFS & NFS Support for NVIDIA Jetson</h1>
+                        <p class="hero-subtitle">
+                            Easy installation of XFS filesystem and NFS server
+                            modules for Jetson 4.9.x kernels
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#install" class="btn btn-primary">
+                                <i class="fas fa-download"></i> Quick Install
+                            </a>
+                            <a
+                                href="https://github.com/markfietje/jetson-kernel-modules-public"
+                                class="btn btn-secondary"
+                                target="_blank"
+                            >
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-features">
+                        <div class="feature-card">
+                            <i class="fas fa-hdd"></i>
+                            <h3>XFS Support</h3>
+                            <p>High-performance journaling filesystem</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-network-wired"></i>
+                            <h3>NFS Server</h3>
+                            <p>Network file sharing capabilities</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Easy Setup</h3>
+                            <p>One-command installation</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="install" class="install-section">
+                <div class="container">
+                    <h2><i class="fas fa-rocket"></i> Quick Installation</h2>
+                    <div class="install-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>Clone the Repository</h3>
+                                <div class="code-block">
+                                    <code
+                                        >git clone
+                                        https://github.com/markfietje/jetson-kernel-modules-public.git</code
+                                    >
+                                    <button
+                                        class="copy-btn"
+                                        onclick="copyToClipboard(this)"
+                                    >
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <p>
+                                    Download the kernel modules to your Jetson
+                                    device
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>Navigate to Directory</h3>
+                                <div class="code-block">
+                                    <code>cd <repository-name></code>
+                                    <button
+                                        class="copy-btn"
+                                        onclick="copyToClipboard(this)"
+                                    >
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <p>Move into the downloaded directory</p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>Run Installation Script</h3>
+                                <div class="code-block">
+                                    <code>sudo ./install.sh</code>
+                                    <button
+                                        class="copy-btn"
+                                        onclick="copyToClipboard(this)"
+                                    >
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <p>
+                                    The script will automatically install and
+                                    configure everything
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Verify Installation</h3>
+                                <div class="code-block">
+                                    <code>lsmod | grep -E '(xfs|nfsd)'</code>
+                                    <button
+                                        class="copy-btn"
+                                        onclick="copyToClipboard(this)"
+                                    >
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                                <p>
+                                    Check that the modules are loaded
+                                    successfully
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="modules" class="modules-section">
+                <div class="container">
+                    <h2><i class="fas fa-cube"></i> Included Kernel Modules</h2>
+                    <div class="modules-grid">
+                        <div class="module-card">
+                            <div class="module-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>XFS Filesystem</h3>
+                            <p>
+                                High-performance 64-bit journaling filesystem
+                                with support for large files and parallel I/O
+                            </p>
+                            <div class="module-specs">
+                                <span class="spec">32MB</span>
+                                <span class="spec">fs/xfs/xfs.ko</span>
+                            </div>
+                        </div>
+
+                        <div class="module-card">
+                            <div class="module-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>NFS Server</h3>
+                            <p>
+                                Network File System server for sharing files
+                                over the network with NFSv4 support
+                            </p>
+                            <div class="module-specs">
+                                <span class="spec">9.1MB</span>
+                                <span class="spec">fs/nfsd/nfsd.ko</span>
+                            </div>
+                        </div>
+
+                        <div class="module-card">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3>Network Lock Manager</h3>
+                            <p>
+                                Manages file locking across networked file
+                                systems for data consistency
+                            </p>
+                            <div class="module-specs">
+                                <span class="spec">5.7MB</span>
+                                <span class="spec">fs/lockd/lockd.ko</span>
+                            </div>
+                        </div>
+
+                        <div class="module-card">
+                            <div class="module-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>RPC Support</h3>
+                            <p>
+                                Remote Procedure Call protocol support for
+                                network communication
+                            </p>
+                            <div class="module-specs">
+                                <span class="spec">10MB</span>
+                                <span class="spec">net/sunrpc/sunrpc.ko</span>
+                            </div>
+                        </div>
+
+                        <div class="module-card">
+                            <div class="module-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>GSS Authentication</h3>
+                            <p>
+                                Secure authentication for NFS using RPCSEC GSS
+                            </p>
+                            <div class="module-specs">
+                                <span class="spec">2.4MB</span>
+                                <span class="spec"
+                                    >net/sunrpc/auth_gss/auth_rpcgss.ko</span
+                                >
+                            </div>
+                        </div>
+
+                        <div class="module-card">
+                            <div class="module-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3>Support Libraries</h3>
+                            <p>
+                                Additional modules for grace periods, ACL
+                                support, and CRC32c calculations
+                            </p>
+                            <div class="module-specs">
+                                <span class="spec">800KB</span>
+                                <span class="spec">lib + fs/nfs_common</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="guide" class="guide-section">
+                <div class="container">
+                    <h2><i class="fas fa-book"></i> Usage Guide</h2>
+
+                    <div class="guide-tabs">
+                        <button
+                            class="tab-btn active"
+                            onclick="showTab('mount')"
+                        >
+                            Mount XFS
+                        </button>
+                        <button class="tab-btn" onclick="showTab('nfs')">
+                            Configure NFS
+                        </button>
+                        <button
+                            class="tab-btn"
+                            onclick="showTab('troubleshoot')"
+                        >
+                            Troubleshoot
+                        </button>
+                    </div>
+
+                    <div class="tab-content">
+                        <div id="mount" class="tab-pane active">
+                            <h3>Mounting XFS Filesystems</h3>
+                            <div class="guide-steps">
+                                <div class="guide-step">
+                                    <h4>Create Mount Point</h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo mkdir -p
+                                            /media/<username>/<drive-label></code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="guide-step">
+                                    <h4>Mount the XFS Drive</h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo mount /dev/<device>
+                                            /media/<username>/<drive-label></code
+                                        >
+                                    </div>
+                                    <p class="tip">
+                                        Replace <code>/dev/&lt;device&gt;</code> with your
+                                        actual device path and <code>/&lt;username&gt;/&lt;drive-label&gt;</code> with your preferred mount location
+                                    </p>
+                                </div>
+                                <div class="guide-step">
+                                    <h4>Verify Mount</h4>
+                                    <div class="code-block">
+                                        <code>mount | grep xfs</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="nfs" class="tab-pane">
+                            <h3>Configuring NFS Server</h3>
+                            <div class="guide-steps">
+                                <div class="guide-step">
+                                    <h4>Create Export Directory</h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo mkdir -p /srv/nfs-share</code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="guide-step">
+                                    <h4>Set Permissions</h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo chown nobody:nogroup
+                                            /srv/nfs-share<br />sudo chmod 755
+                                            /srv/nfs-share</code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="guide-step">
+                                    <h4>Add to Exports</h4>
+                                    <div class="code-block">
+                                        <code
+                                            >echo "/srv/nfs-share
+                                            *(rw,sync,no_subtree_check)" | sudo
+                                            tee -a /etc/exports</code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="guide-step">
+                                    <h4>Reload NFS Service</h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo exportfs -ra<br />sudo
+                                            systemctl restart
+                                            nfs-kernel-server</code
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="troubleshoot" class="tab-pane">
+                            <h3>Troubleshooting</h3>
+                            <div class="troubleshoot-grid">
+                                <div class="trouble-item">
+                                    <h4>
+                                        <i
+                                            class="fas fa-exclamation-triangle"
+                                        ></i>
+                                        Modules not loading?
+                                    </h4>
+                                    <div class="code-block">
+                                        <code
+                                            >uname -r<br />sudo depmod -a<br />dmesg
+                                            | grep -E '(xfs|nfsd)'</code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="trouble-item">
+                                    <h4>
+                                        <i
+                                            class="fas fa-exclamation-triangle"
+                                        ></i>
+                                        NFS server not starting?
+                                    </h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo systemctl status
+                                            nfs-kernel-server<br />sudo
+                                            systemctl restart rpcbind</code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="trouble-item">
+                                    <h4>
+                                        <i
+                                            class="fas fa-exclamation-triangle"
+                                        ></i>
+                                        Mount errors?
+                                    </h4>
+                                    <div class="code-block">
+                                        <code
+                                            >sudo fdisk -l<br />sudo blkid
+                                            /dev/sdXn<br />sudo mount -t xfs
+                                            /dev/sdXn /mnt/test</code
+                                        >
+                                    </div>
+                                </div>
+                                <div class="trouble-item">
+                                    <h4>
+                                        <i
+                                            class="fas fa-exclamation-triangle"
+                                        ></i>
+                                        Client can't connect?
+                                    </h4>
+                                    <div class="code-block">
+                                        <code
+                                            >showmount -e localhost<br />sudo
+                                            ufw status<br />sudo exportfs
+                                            -v</code
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="support" class="support-section">
+                <div class="container">
+                    <h2>
+                        <i class="fas fa-life-ring"></i> Support & Compatibility
+                    </h2>
+
+                    <div class="compatibility-grid">
+                        <div class="compat-card">
+                            <h3>Supported Devices</h3>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-check"></i> NVIDIA Jetson
+                                    TX1
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> NVIDIA Jetson
+                                    TX2
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> NVIDIA Jetson
+                                    Xavier NX
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> NVIDIA Jetson
+                                    Nano
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> NVIDIA Jetson
+                                    AGX Xavier
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="compat-card">
+                            <h3>Kernel Versions</h3>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-check"></i> 4.9.140-tegra
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> 4.9.201-tegra
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> 4.9.253-tegra
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="compat-card">
+                            <h3>JetPack Versions</h3>
+                            <ul>
+                                <li>
+                                    <i class="fas fa-check"></i> JetPack 4.4
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> JetPack 4.5
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i> JetPack 4.6
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="support-actions">
+                        <a
+                            href="https://github.com/markfietje/jetson-kernel-modules-public/issues"
+                            class="btn btn-outline"
+                            target="_blank"
+                        >
+                            <i class="fab fa-github"></i> Report Issues
+                        </a>
+                        <a
+                            href="https://github.com/markfietje/jetson-kernel-modules-public"
+                            class="btn btn-outline"
+                            target="_blank"
+                        >
+                            <i class="fas fa-code"></i> View Source
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <i class="fas fa-microchip"></i>
+                        <span>Jetson Kernel Modules</span>
+                    </div>
+                    <div class="footer-links">
+                        <a
+                            href="https://github.com/markfietje/jetson-kernel-modules-public"
+                            target="_blank"
+                        >
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="mailto:">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>
+                        &copy; 2024 Jetson Kernel Modules. Licensed under GPLv2.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
